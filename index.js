@@ -1,12 +1,12 @@
-const http = require('http');
-const PORT = 3000;
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000; // Use the provided PORT or default to 3000
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!');
+app.get("/", (req, res) => {
+  const data = { message: "Hello, World!" };
+  res.json(data);
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
